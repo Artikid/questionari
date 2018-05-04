@@ -1,4 +1,9 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>{{title}}</span>
+    <span class="toolbar-title">{{title}}</span>
+    <a mat-button [routerLink]="['']">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </a>
+    <a mat-button [routerLink]="['students']">Studenti</a>
   </mat-toolbar-row>

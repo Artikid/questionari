@@ -1,0 +1,9 @@
+<mat-table mat-table #table [dataSource]="dataSource">
+  <ng-container matColumnDef={{header}} *ngFor="let header of headers">
+    <mat-header-cell *matHeaderCellDef> {{header}} </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element[header]}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="headers"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: headers;"></mat-row>
+</mat-table>
