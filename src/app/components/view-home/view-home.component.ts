@@ -31,6 +31,12 @@ export class ViewHomeComponent implements OnInit {
     setTimeout(setItems, 3000);
   }
 
+  getItems() {
+    return this.items.map(item => {
+      return { ...item, date: item.date.toDateString() };
+    });
+  }
+
   ngOnInit() {
     console.log("ngOnChanges!");
   }

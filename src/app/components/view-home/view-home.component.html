@@ -3,26 +3,8 @@
         <mat-card-title>Home</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <ng-container *ngIf="items.length; else nocontent" [ngSwitch]="items.length">
-            <table *ngSwitchCase=2>
-                <thead>
-                    <th>ID</th>
-                    <th>Data</th>
-                    <th>Descrizione</th>
-                    <th>Allievo</th>
-                    <th>Docente</th>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let item of items">
-                        <td>{{item.id}}</td>
-                        <td>{{item.date.toDateString()}}</td>
-                        <td>{{item.description}}</td>
-                        <td>{{item.student}}</td>
-                        <td>{{item.teacher}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </ng-container>
+        <app-table [headers]="['id', 'date', 'description', 'student', 'teacher']" [items]="getItems()" *ngIf="getItems().length; else nocontent">
+        </app-table>
         <ng-template #nocontent> Loading... </ng-template>
     </mat-card-content>
 </mat-card>
