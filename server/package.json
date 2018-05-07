@@ -1,0 +1,16 @@
+  {
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Mock web service",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "./node_modules/.bin/nodemon index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "nodemon": "^1.17.4"
+  }
+}
