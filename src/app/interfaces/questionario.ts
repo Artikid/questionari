@@ -1,7 +1,0 @@
-export interface Questionario {
-    id: number;
-    description: string;
-    date: Date;
-    student: string;
-    teacher: string;
-}

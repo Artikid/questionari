@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from "@angular/core";
-import { Questionario } from "../../interfaces/questionario";
+import { Survey } from "../../interfaces/survey";
 
 @Component({
   selector: "app-view-home",
@@ -7,7 +7,7 @@ import { Questionario } from "../../interfaces/questionario";
   styleUrls: ["./view-home.component.scss"]
 })
 export class ViewHomeComponent implements OnInit {
-  items: Questionario[] = [];
+  items: Survey[] = [];
 
   constructor() {
     const setItems = () => {
@@ -28,7 +28,7 @@ export class ViewHomeComponent implements OnInit {
         }
       ];
     };
-    setTimeout(setItems, 3000);
+    setTimeout(setItems, 1000);
   }
 
   getItems() {
@@ -37,7 +37,5 @@ export class ViewHomeComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    console.log("ngOnChanges!");
-  }
+  ngOnInit() {}
 }
