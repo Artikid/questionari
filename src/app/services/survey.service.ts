@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Survey } from "../interfaces/survey";
 import { Observable, from, of } from "rxjs";
-import "rxjs/add/observable/of";
 
 @Injectable({
   providedIn: "root"
@@ -10,7 +9,7 @@ export class SurveyService {
   constructor() {}
 
   getSurveyList(): Observable<Survey[]> {
-    return Observable.of([
+    return of([
       {
         id: 1,
         description: "Corso LibreOffice",

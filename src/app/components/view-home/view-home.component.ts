@@ -12,7 +12,11 @@ export class ViewHomeComponent implements OnInit {
   items: Survey[] = [];
 
   constructor(public surveyService: SurveyService) {
-    this.items = surveyService.getSurveyList();
+    const observable = surveyService.getSurveyList()
+    observable.
+    observable.subscribe(response => {
+      this.items = response;
+    });
   }
 
   getItems() {
