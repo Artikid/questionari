@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from "@angular/core";
 import { Survey } from "../../interfaces/survey";
+import { SurveyService } from "../../services/survey.service";
 
 @Component({
   selector: "app-view-home",
@@ -7,28 +8,11 @@ import { Survey } from "../../interfaces/survey";
   styleUrls: ["./view-home.component.scss"]
 })
 export class ViewHomeComponent implements OnInit {
+  includedColumns = ["id", "date", "description", "studend", "teacher"];
   items: Survey[] = [];
 
-  constructor() {
-    const setItems = () => {
-      this.items = [
-        {
-          id: 1,
-          description: "Corso LibreOffice",
-          date: new Date("2018-05-08"),
-          student: "Mario Rossi",
-          teacher: "Luigi Verdi"
-        },
-        {
-          id: 2,
-          description: "Corso Angular",
-          date: new Date("2018-05-25"),
-          student: "Mario Bianchi",
-          teacher: "Luigi Rossi"
-        }
-      ];
-    };
-    setTimeout(setItems, 1000);
+  constructor(public surveyService: SurveyService) {
+    this.items = surveyService.getSurveyList();
   }
 
   getItems() {
