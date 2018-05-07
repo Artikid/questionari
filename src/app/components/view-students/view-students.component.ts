@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Student } from "../../interfaces/student";
+import { StudentService } from "../../services/student.service";
 
 @Component({
   selector: "app-view-students",
@@ -7,21 +8,12 @@ import { Student } from "../../interfaces/student";
   styleUrls: ["./view-students.component.scss"]
 })
 export class ViewStudentsComponent implements OnInit {
-  items: Student[] = [
-    {
-      id: 1,
-      name: "Andrea",
-      surname: "Cammarata",
-      dob: new Date("1990/04/08")
-    },
-    {
-      id: 2,
-      name: "Andrea",
-      surname: "Cammaroto",
-      dob: new Date("1980/01/01")
-    }
-  ];
-  constructor() {}
+  items: Student[] = [];
+  constructor(public studentService: StudentService) {
+    studentService.getStudentList().subscribe(response => {
+      this.items = response;
+    });
+  }
 
   ngOnInit() {}
 

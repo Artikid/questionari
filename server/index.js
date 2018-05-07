@@ -15,8 +15,14 @@ router.get("/", (req, res) => {
 });
 
 router.get("/surveys", (req, res) => {
-    res.sendFile(path.join(path.dirname(__filename),"data","survey-list.json"));
-  });
+  res.sendFile(path.join(path.dirname(__filename), "data", "survey-list.json"));
+});
+
+router.get("/students", (req, res) => {
+  res.sendFile(
+    path.join(path.dirname(__filename), "data", "student-list.json")
+  );
+});
 
 app.use("/api", router);
 

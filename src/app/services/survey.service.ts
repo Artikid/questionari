@@ -1,29 +1,24 @@
 import { Injectable } from "@angular/core";
 import { Survey } from "../interfaces/survey";
 import { Observable, from, of } from "rxjs";
+import { map } from "rxjs/operators";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root"
 })
 export class SurveyService {
-  constructor() {}
+  constructor(public http: HttpClient) {}
 
   getSurveyList(): Observable<Survey[]> {
-    return of([
-      {
-        id: 1,
-        description: "Corso LibreOffice",
-        date: new Date("2018-05-08"),
-        student: "Mario Rossi",
-        teacher: "Luigi Verdi"
-      },
-      {
-        id: 2,
-        description: "Corso Angular",
-        date: new Date("2018-05-25"),
-        student: "Mario Bianchi",
-        teacher: "Luigi Rossi"
-      }
-    ]);
+    const mapSurveys = (item: Survey) => {
+      return {
+        ...item,
+        date: new Date(item.date)
+      };
+    };
+    return this.http
+      .get<Survey[]>("http://localhost:3000/api/surveys")
+      .pipe(map((items: Survey[]) => items.map(mapSurveys)));
   }
 }
