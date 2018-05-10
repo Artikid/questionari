@@ -1,23 +1,33 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
-
+import { NgModule, LOCALE_ID } from "@angular/core";
+import { registerLocaleData } from "@angular/common";
+import localeIt from "@angular/common/locales/it";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
 import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
+registerLocaleData(localeIt, "it");
 import {
   MatToolbarModule,
   MatCardModule,
   MatMenuModule,
   MatButtonModule,
   MatIconModule,
-  MatTableModule
+  MatTableModule,
+  MatFormField,
+  MatInputModule,
+  MatFormFieldModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from "@angular/material";
 import { ViewHomeComponent } from "./components/view-home/view-home.component";
 import { ViewStudentsComponent } from "./components/view-students/view-students.component";
 import { TableComponent } from "./components/table/table.component";
 import { HttpClientModule } from "@angular/common/http";
+import { ViewSurveyFormComponent } from "./components/view-survey-form/view-survey-form.component";
+import { FormsModule } from "@angular/forms";
+import { SurveyFormComponent } from './components/survey-form/survey-form.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +36,9 @@ import { HttpClientModule } from "@angular/common/http";
     FooterComponent,
     ViewHomeComponent,
     ViewStudentsComponent,
-    TableComponent
+    TableComponent,
+    ViewSurveyFormComponent,
+    SurveyFormComponent
   ],
   imports: [
     BrowserModule,
@@ -38,9 +50,14 @@ import { HttpClientModule } from "@angular/common/http";
     MatButtonModule,
     MatIconModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: "it" }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
