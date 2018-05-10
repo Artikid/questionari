@@ -5,6 +5,17 @@ import { map } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
 import { SurveyNew } from "../interfaces/survey-new";
 import { fadeInItems } from "@angular/material";
+import { environment } from "../../environments/environment";
+
+const mapSurvey = (item: Survey) => {
+  return {
+    ...item,
+    date: new Date(item.date)
+  };
+};
+const mapSurveys = (items: Survey[]) => {
+  return items.map(mapSurvey);
+};
 
 @Injectable({
   providedIn: "root"
@@ -12,25 +23,19 @@ import { fadeInItems } from "@angular/material";
 export class SurveyService {
   constructor(public http: HttpClient) {}
 
-  const mapSurvey = (item: Survey) => {
-    return {
-      ...item,
-      date: new Date(item.date)
-    };
+  getBaseUrl() {
+    return environment.apiBaseUrl;
   }
-  const mapSurveys = (items: Survey[]) => {
-    return items.map(mapSurvey);
-  };
 
-  
-
-  getSurveyList(): Observable<Survey[]> {  
+  getSurveyList(): Observable<Survey[]> {
     return this.http
-      .get<Survey[]>("http://localhost:3000/api/surveys")
-      .pipe(map((items: Survey[]) => items.map(mapSurveys)));
+      .get<Survey[]>(this.getBaseUrl() + "surveys")
+      .pipe(map(mapSurveys));
   }
 
   createSurvey(survey: SurveyNew): Observable<Survey> {
-    return this.http.post<Survey>("http://localhost:3000/api/surveys", survey).pipe(map(mapSurvey:))
+    return this.http
+      .post<Survey>(this.getBaseUrl() + "surveys", survey)
+      .pipe(map(mapSurvey));
   }
 }

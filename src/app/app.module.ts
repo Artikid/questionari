@@ -19,7 +19,11 @@ import {
   MatInputModule,
   MatFormFieldModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatSnackBarModule,
+  MatSelectModule,
+  MatOptionModule,
+  MatProgressSpinnerModule
 } from "@angular/material";
 import { ViewHomeComponent } from "./components/view-home/view-home.component";
 import { ViewStudentsComponent } from "./components/view-students/view-students.component";
@@ -27,7 +31,7 @@ import { TableComponent } from "./components/table/table.component";
 import { HttpClientModule } from "@angular/common/http";
 import { ViewSurveyFormComponent } from "./components/view-survey-form/view-survey-form.component";
 import { FormsModule } from "@angular/forms";
-import { SurveyFormComponent } from './components/survey-form/survey-form.component';
+import { SurveyFormComponent } from "./components/survey-form/survey-form.component";
 
 @NgModule({
   declarations: [
@@ -55,7 +59,11 @@ import { SurveyFormComponent } from './components/survey-form/survey-form.compon
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatProgressSpinnerModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: "it" }],
   bootstrap: [AppComponent]
