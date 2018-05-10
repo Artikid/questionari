@@ -1,7 +1,9 @@
+import { Student } from "./student";
+
 export interface Survey {
   id: number;
   description: string;
   date: Date;
-  student: string;
+  student: Student;
   teacher: string;
 }

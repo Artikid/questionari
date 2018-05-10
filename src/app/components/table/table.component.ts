@@ -7,6 +7,7 @@ import {
 } from "@angular/core";
 import { Student } from "../../interfaces/student";
 import { MatTableDataSource } from "@angular/material";
+import { TableAction } from "../../interfaces/table-action";
 
 @Component({
   selector: "app-table",
@@ -16,6 +17,7 @@ import { MatTableDataSource } from "@angular/material";
 export class TableComponent<T> implements OnInit, OnChanges {
   @Input() headers: string[] = [];
   @Input() items: T[] = [];
+  @Input() actions: TableAction<T>[] = [];
   dataSource = new MatTableDataSource<T>(this.items);
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -24,4 +26,12 @@ export class TableComponent<T> implements OnInit, OnChanges {
   constructor() {}
 
   ngOnInit() {}
+
+  getColumnDefinitions() {
+    const columns = this.headers.slice();
+    if (this.actions.length) {
+      columns.push("actions");
+    }
+    return columns;
+  }
 }

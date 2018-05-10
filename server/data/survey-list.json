@@ -3,14 +3,24 @@
     "id": 1,
     "description": "Corso LibreOffice",
     "date": "2018-05-08",
-    "student": "Mario Rossi",
+    "student": {
+      "id": 1,
+      "name": "Andrea",
+      "surname": "Cammarata",
+      "dob": "1990/04/08"
+    },
     "teacher": "Luigi Verdi"
   },
   {
     "id": 2,
     "description": "Corso Angular",
     "date": "2018-05-25",
-    "student": "Mario Bianchi",
+    "student": {
+      "id": 2,
+      "name": "Andrea",
+      "surname": "Cammaroto",
+      "dob": "1980/01/01"
+    },
     "teacher": "Luigi Rossi"
   }
 ]

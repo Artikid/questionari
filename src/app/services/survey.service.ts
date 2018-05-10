@@ -38,4 +38,18 @@ export class SurveyService {
       .post<Survey>(this.getBaseUrl() + "surveys", survey)
       .pipe(map(mapSurvey));
   }
+
+  updateSurvey(survey: Survey): Observable<Survey> {
+    return this.http
+      .put<Survey>(this.getBaseUrl() + "surveys/" + survey.id, survey)
+      .pipe(map(mapSurvey));
+  }
+
+  getSurveyById(id: number): Observable<Survey> {
+    return this.http.get<Survey>(this.getBaseUrl() + "surveys/" + id);
+  }
+
+  deleteSurvey(survey: Survey): Observable<Survey> {
+    return this.http.delete<Survey>(this.getBaseUrl() + "surveys");
+  }
 }

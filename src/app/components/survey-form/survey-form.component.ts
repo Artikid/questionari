@@ -13,15 +13,12 @@ import { StudentService } from "../../services/student.service";
   styleUrls: ["./survey-form.component.scss"]
 })
 export class SurveyFormComponent implements OnInit {
-  @Input() survey: SurveyNew = {};
+  @Input() survey: SurveyNew | Survey = {};
+  @Output() onSurveySubmit: EventEmitter<SurveyNew|Survey> = new EventEmitter();
   students: Student[] = [];
   isLoading: boolean = true;
 
-  constructor(
-    public surveyService: SurveyService,
-    public snackbar: MatSnackBar,
-    public studentService: StudentService
-  ) {
+  constructor(public studentService: StudentService) {
     this.studentService.getStudentList().subscribe((response: Student[]) => {
       this.students = response;
       this.isLoading = false;
@@ -33,17 +30,9 @@ export class SurveyFormComponent implements OnInit {
 
   saveSurvey(f: NgForm) {
     if (f.valid) {
-      this.surveyService
-        .createSurvey(this.survey)
-        .subscribe((response: Survey) => {
-          this.snackbar.open(
-            `Creato questionario con ID ${response.id}`,
-            "Ok, grazie",
-            { duration: 2500 }
-          );
-        });
-    } else {
-      this.snackbar.open("Form non valido", "Ok, grazie", { duration: 2500 });
-    }
+      this.onSurveySubmit.emit(this.survey);
+    } 
   }
-}
+  }
+  
+

@@ -32,6 +32,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { ViewSurveyFormComponent } from "./components/view-survey-form/view-survey-form.component";
 import { FormsModule } from "@angular/forms";
 import { SurveyFormComponent } from "./components/survey-form/survey-form.component";
+import { ViewEditSurveyComponent } from './components/view-edit-survey/view-edit-survey.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { SurveyFormComponent } from "./components/survey-form/survey-form.compon
     ViewStudentsComponent,
     TableComponent,
     ViewSurveyFormComponent,
-    SurveyFormComponent
+    SurveyFormComponent,
+    ViewEditSurveyComponent
   ],
   imports: [
     BrowserModule,

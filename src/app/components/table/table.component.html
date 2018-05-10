@@ -4,6 +4,15 @@
     <mat-cell *matCellDef="let element"> {{element[header]}} </mat-cell>
   </ng-container>
 
-  <mat-header-row *matHeaderRowDef="headers"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: headers;"></mat-row>
+  <ng-container matColumnDef="actions" *ngIf="actions">
+    <mat-header-cell *matHeaderCellDef> Azioni </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-icon-button (click)="action.callback(element)" *ngFor="let action of actions">
+        <mat-icon>{{action.icon}}</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="getColumnDefinitions()"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: getColumnDefinitions(); "></mat-row>
 </mat-table>

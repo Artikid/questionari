@@ -25,6 +25,21 @@ router.get("/surveys", (req, res) => {
   res.sendFile(path.join(path.dirname(__filename), "data", "survey-list.json"));
 });
 
+router.get("/surveys/:id", (req, res) => {
+  const id = req.params.id;
+  const items = require(path.join(
+    path.dirname(__filename),
+    "data",
+    "survey-list.json"
+  ));
+  const item = items.find(item => item.id == id);
+  if (item) {
+    res.send(item);
+  } else {
+    res.status(404).send("not found");
+  }
+});
+
 router.get("/students", (req, res) => {
   res.sendFile(
     path.join(path.dirname(__filename), "data", "student-list.json")
@@ -35,6 +50,14 @@ router.post("/surveys", (req, res) => {
   const formData = req.body;
   formData.id = 123;
   res.send(formData);
+});
+
+router.delete("/surveys", (req, res) => {
+  res.send("Voglio eliminare qualcosa!");
+});
+
+router.put("/surveys/:id", (req, res) => {
+  res.send(req.body);
 });
 
 app.use("/api", router);
