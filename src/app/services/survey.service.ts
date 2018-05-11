@@ -6,6 +6,7 @@ import { HttpClient } from "@angular/common/http";
 import { SurveyNew } from "../interfaces/survey-new";
 import { fadeInItems } from "@angular/material";
 import { environment } from "../../environments/environment";
+import { SurveyEdit } from "../interfaces/survey-edit";
 
 const mapSurvey = (item: Survey) => {
   return {
@@ -39,7 +40,7 @@ export class SurveyService {
       .pipe(map(mapSurvey));
   }
 
-  updateSurvey(survey: Survey): Observable<Survey> {
+  updateSurvey(survey: SurveyEdit): Observable<Survey> {
     return this.http
       .put<Survey>(this.getBaseUrl() + "surveys/" + survey.id, survey)
       .pipe(map(mapSurvey));

@@ -16,7 +16,7 @@
     </mat-form-field>
   </div>
   <mat-form-field>
-    <mat-select placeholder="Seleziona studente" name="student" required [(ngModel)]="survey.student.id">
+    <mat-select placeholder="Seleziona studente" name="student" required [(ngModel)]="survey.student">
       <mat-option *ngFor="let student of students" [value]="student.id">
         {{ student.name }} {{student.surname}}
       </mat-option>

@@ -9,6 +9,17 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
+router.post("/login", (req, res) => {
+  const user = req.body;
+  if (user.username == "test" && user.password == "test") {
+    res.send({
+      accessToken: "test-token-1234"
+    });
+  } else {
+    res.status(401).send("Unauthorized");
+  }
+});
+
 app.get("/", function(req, res) {
   res.send("Hello World!");
 });

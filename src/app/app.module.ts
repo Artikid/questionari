@@ -33,6 +33,7 @@ import { ViewSurveyFormComponent } from "./components/view-survey-form/view-surv
 import { FormsModule } from "@angular/forms";
 import { SurveyFormComponent } from "./components/survey-form/survey-form.component";
 import { ViewEditSurveyComponent } from './components/view-edit-survey/view-edit-survey.component';
+import { ViewLoginComponent } from './components/view-login/view-login.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ViewEditSurveyComponent } from './components/view-edit-survey/view-edit
     TableComponent,
     ViewSurveyFormComponent,
     SurveyFormComponent,
-    ViewEditSurveyComponent
+    ViewEditSurveyComponent,
+    ViewLoginComponent
   ],
   imports: [
     BrowserModule,

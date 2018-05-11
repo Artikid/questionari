@@ -4,6 +4,7 @@ import { Survey } from "../../interfaces/survey";
 import { SurveyNew } from "../../interfaces/survey-new";
 import { SurveyService } from "../../services/survey.service";
 import { MatSnackBar } from "@angular/material";
+import { SurveyEdit } from "../../interfaces/survey-edit";
 
 @Component({
   selector: "app-view-edit-survey",
@@ -11,17 +12,21 @@ import { MatSnackBar } from "@angular/material";
   styleUrls: ["./view-edit-survey.component.scss"]
 })
 export class ViewEditSurveyComponent implements OnInit {
-  survey: Survey;
+  survey: SurveyEdit;
   constructor(
     public route: ActivatedRoute,
     public surveyService: SurveyService,
     public snackbar: MatSnackBar
   ) {
-    this.survey = this.route.snapshot.data.survey;
+    const survey = this.route.snapshot.data.survey;
+    this.survey = {
+      ...survey,
+      student: survey.student.id
+    };
   }
 
   ngOnInit() {}
-  saveSurvey(survey: Survey) {
+  saveSurvey(survey: SurveyEdit) {
     this.surveyService
       .updateSurvey(this.survey)
       .subscribe((response: Survey) => {

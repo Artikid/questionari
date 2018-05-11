@@ -5,6 +5,7 @@ import { ViewStudentsComponent } from "./components/view-students/view-students.
 import { ViewSurveyFormComponent } from "./components/view-survey-form/view-survey-form.component";
 import { ViewEditSurveyComponent } from "./components/view-edit-survey/view-edit-survey.component";
 import { SurveyByIdService } from "./resolvers/survey-by-id.service";
+import { ViewLoginComponent } from "./components/view-login/view-login.component";
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: "survey-form",
     component: ViewSurveyFormComponent
+  },
+  {
+    path: "login",
+    component: ViewLoginComponent
   }
 ];
 
