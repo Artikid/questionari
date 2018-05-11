@@ -6,24 +6,32 @@ import { ViewSurveyFormComponent } from "./components/view-survey-form/view-surv
 import { ViewEditSurveyComponent } from "./components/view-edit-survey/view-edit-survey.component";
 import { SurveyByIdService } from "./resolvers/survey-by-id.service";
 import { ViewLoginComponent } from "./components/view-login/view-login.component";
+import { AppComponent } from "./app.component";
+import { AuthGuard } from "./guards/auth.guard";
 
 const routes: Routes = [
   {
     path: "",
-    component: ViewHomeComponent
-  },
-  {
-    path: "surveys/:id",
-    component: ViewEditSurveyComponent,
-    resolve: { survey: SurveyByIdService }
-  },
-  {
-    path: "students",
-    component: ViewStudentsComponent
-  },
-  {
-    path: "survey-form",
-    component: ViewSurveyFormComponent
+    canActivateChild: [AuthGuard],
+    children: [
+      {
+        path: "",
+        component: ViewHomeComponent
+      },
+      {
+        path: "surveys/:id",
+        component: ViewEditSurveyComponent,
+        resolve: { survey: SurveyByIdService }
+      },
+      {
+        path: "students",
+        component: ViewStudentsComponent
+      },
+      {
+        path: "survey-form",
+        component: ViewSurveyFormComponent
+      }
+    ]
   },
   {
     path: "login",

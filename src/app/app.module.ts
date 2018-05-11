@@ -32,8 +32,9 @@ import { HttpClientModule } from "@angular/common/http";
 import { ViewSurveyFormComponent } from "./components/view-survey-form/view-survey-form.component";
 import { FormsModule } from "@angular/forms";
 import { SurveyFormComponent } from "./components/survey-form/survey-form.component";
-import { ViewEditSurveyComponent } from './components/view-edit-survey/view-edit-survey.component';
-import { ViewLoginComponent } from './components/view-login/view-login.component';
+import { ViewEditSurveyComponent } from "./components/view-edit-survey/view-edit-survey.component";
+import { ViewLoginComponent } from "./components/view-login/view-login.component";
+import { AuthGuard } from "./guards/auth.guard";
 
 @NgModule({
   declarations: [
@@ -69,7 +70,7 @@ import { ViewLoginComponent } from './components/view-login/view-login.component
     MatOptionModule,
     MatProgressSpinnerModule
   ],
-  providers: [{ provide: LOCALE_ID, useValue: "it" }],
+  providers: [{ provide: LOCALE_ID, useValue: "it" }, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

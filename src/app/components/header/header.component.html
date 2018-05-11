@@ -5,5 +5,16 @@
       <mat-icon>home</mat-icon>
       <span>Home</span>
     </a>
-    <a mat-button [routerLink]="['students']">Studenti</a>
+    <a mat-button [routerLink]="['students']">
+      <mat-icon>people</mat-icon>Studenti</a>
+    <span class="divider">
+    </span>
+    <a mat-button [routerLink]="['login']" *ngIf="!authService.isLoggedIn(); else: logout">
+      <mat-icon>input</mat-icon>
+      Login</a>
+    <ng-template #logout>
+      <!-- <label>Ciao {{user.username}}</label> -->
+      <button mat-button (click)="authService.logout()">
+        <mat-icon>exit_to_app</mat-icon>Logout</button>
+    </ng-template>
   </mat-toolbar-row>
