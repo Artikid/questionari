@@ -7,7 +7,11 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
 import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
 registerLocaleData(localeIt, "it");
+import * as moment from "moment";
+import "moment/locale/it";
+moment.locale("it");
 import {
   MatToolbarModule,
   MatCardModule,
@@ -23,7 +27,8 @@ import {
   MatSnackBarModule,
   MatSelectModule,
   MatOptionModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatDialogModule
 } from "@angular/material";
 import { ViewHomeComponent } from "./components/view-home/view-home.component";
 import { ViewStudentsComponent } from "./components/view-students/view-students.component";
@@ -35,6 +40,8 @@ import { SurveyFormComponent } from "./components/survey-form/survey-form.compon
 import { ViewEditSurveyComponent } from "./components/view-edit-survey/view-edit-survey.component";
 import { ViewLoginComponent } from "./components/view-login/view-login.component";
 import { AuthGuard } from "./guards/auth.guard";
+import { ViewCoursesComponent } from "./components/view-courses/view-courses.component";
+import { CourseFormComponent } from "./components/course-form/course-form.component";
 
 @NgModule({
   declarations: [
@@ -47,7 +54,9 @@ import { AuthGuard } from "./guards/auth.guard";
     ViewSurveyFormComponent,
     SurveyFormComponent,
     ViewEditSurveyComponent,
-    ViewLoginComponent
+    ViewLoginComponent,
+    ViewCoursesComponent,
+    CourseFormComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +72,7 @@ import { AuthGuard } from "./guards/auth.guard";
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule,
+    MatMomentDateModule,
     FormsModule,
     MatSnackBarModule,
     MatSelectModule,
@@ -71,6 +80,7 @@ import { AuthGuard } from "./guards/auth.guard";
     MatProgressSpinnerModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: "it" }, AuthGuard],
+  entryComponents: [CourseFormComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -4,6 +4,10 @@ export interface Survey {
   id: number;
   description: string;
   date: Date;
-  student: Student;
+  studentName: string;
+  studentSurname:string;
+  studentEmail:string;
+  studentCompany:string;
+  studentDepartment:string;
   teacher: string;
 }

@@ -12,18 +12,18 @@ export class ViewHomeComponent implements OnInit {
   includedColumns = ["id", "date", "description", "studend", "teacher"];
   items: Survey[] = [];
   actions: TableAction<Survey>[] = [
-    {
-      icon: "edit",
-      callback: (item: Survey) => {
-        this.goToEditSurvey(item);
-      }
-    },
-    {
-      icon: "delete",
-      callback: (item: Survey) => {
-        this.deleteSurvey(item);
-      }
-    }
+    // {
+    //   icon: "edit",
+    //   callback: (item: Survey) => {
+    //     this.goToEditSurvey(item);
+    //   }
+    // },
+    // {
+    //   icon: "delete",
+    //   callback: (item: Survey) => {
+    //     this.deleteSurvey(item);
+    //   }
+    // }
   ];
 
   constructor(public surveyService: SurveyService, public router: Router) {
@@ -50,7 +50,7 @@ export class ViewHomeComponent implements OnInit {
       return {
         ...item,
         date: item.date.toDateString(),
-        student: item.student.name + " " + item.student.surname
+        student: item.studentName + " " + item.studentSurname
       };
     });
   }

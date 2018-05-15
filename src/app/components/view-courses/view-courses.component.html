@@ -1,0 +1,9 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button mat-mini-fab color="primary" (click)="openAddCourseModal()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<app-table [headers]="['id', 'description', 'date']" [items]="getItems()"></app-table>
