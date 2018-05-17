@@ -1,9 +1,9 @@
-import { Student } from "./student";
+import { Moment } from "moment";
 
 export interface Survey {
   id: number;
   description: string;
-  date: Date;
+  date: Moment;
   studentName: string;
   studentSurname:string;
   studentEmail:string;

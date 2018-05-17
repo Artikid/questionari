@@ -5,7 +5,6 @@ import { SurveyService } from "../../services/survey.service";
 import { Survey } from "../../interfaces/survey";
 import { MatSnackBar } from "@angular/material";
 import { Student } from "../../interfaces/student";
-import { StudentService } from "../../services/student.service";
 
 @Component({
   selector: "app-survey-form",
@@ -14,25 +13,17 @@ import { StudentService } from "../../services/student.service";
 })
 export class SurveyFormComponent implements OnInit {
   @Input() survey: SurveyNew | Survey = {};
-  @Output() onSurveySubmit: EventEmitter<SurveyNew|Survey> = new EventEmitter();
+  @Output() onSurveySubmit: EventEmitter<SurveyNew | Survey> = new EventEmitter();
   students: Student[] = [];
   isLoading: boolean = true;
 
-  constructor(public studentService: StudentService) {
-    this.studentService.getStudentList().subscribe((response: Student[]) => {
-      this.students = response;
-      this.isLoading = false;
-    });
-    
-  }
+  constructor() {}
 
   ngOnInit() {}
 
   saveSurvey(f: NgForm) {
     if (f.valid) {
       this.onSurveySubmit.emit(this.survey);
-    } 
+    }
   }
-  }
-  
-
+}

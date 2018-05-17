@@ -1,8 +1,10 @@
 import { Component, OnInit, AfterViewInit } from "@angular/core";
 import { Survey } from "../../interfaces/survey";
-import { SurveyService } from "../../services/survey.service";
 import { TableAction } from "../../interfaces/table-action";
 import { Router } from "@angular/router";
+import * as moment from "moment";
+import { SurveyService } from "../../services/survey.service";
+
 @Component({
   selector: "app-view-home",
   templateUrl: "./view-home.component.html",
@@ -36,20 +38,12 @@ export class ViewHomeComponent implements OnInit {
     this.router.navigate(["surveys/", item.id]);
   }
 
-  deleteSurvey(item: Survey) {
-    let si = confirm("Sei sicuro?");
-    if (si) {
-      this.surveyService.deleteSurvey(item).subscribe(response => {
-        item = response;
-      });
-    }
-  }
 
   getItems() {
     return this.items.map(item => {
       return {
         ...item,
-        date: item.date.toDateString(),
+        date: item.date.locale(moment.locale()).format("L"),
         student: item.studentName + " " + item.studentSurname
       };
     });

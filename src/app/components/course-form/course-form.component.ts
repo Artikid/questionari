@@ -1,10 +1,10 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { Course } from "../../interfaces/course";
 
-interface CourseFormFields {
-  description?: string;
-  date?: string;
+export interface CourseFormDialogData {
+  onSave: (dialogRef: MatDialogRef<CourseFormComponent>, model: Course) => void;
 }
 
 @Component({
@@ -13,18 +13,22 @@ interface CourseFormFields {
   styleUrls: ["./course-form.component.scss"]
 })
 export class CourseFormComponent implements OnInit {
-  model: CourseFormFields = {};
+  model: Course = {};
 
-  constructor(public dialogRef: MatDialogRef<CourseFormComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
+  constructor(
+    public dialogRef: MatDialogRef<CourseFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: CourseFormDialogData
+  ) {}
 
   ngOnInit() {}
 
   saveCourse(f: NgForm) {
     if (f.valid) {
-      this.dialogRef.close({
-        id: 1,
-        ...this.model
-      });
+      if (this.data && this.data.onSave) {
+        this.data.onSave(this.dialogRef, this.model);
+      } else {
+        this.dialogRef.close(this.model);
+      }
     }
   }
   dismissModal() {

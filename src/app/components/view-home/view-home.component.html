@@ -10,7 +10,7 @@
         </button> 
     </mat-toolbar-row>
 </mat-toolbar>-->
-        <app-table [headers]="['id', 'date', 'description', 'student', 'teacher']" [items]="getItems()" [actions]="actions" *ngIf="getItems().length; else nocontent">
+        <app-table [headers]="['id', 'date', 'description', 'student', 'teacher']" [items]="getItems()" *ngIf="getItems().length; else nocontent">
         </app-table>
         <ng-template #nocontent> Loading... </ng-template>
     </mat-card-content>

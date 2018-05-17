@@ -31,7 +31,6 @@ import {
   MatDialogModule
 } from "@angular/material";
 import { ViewHomeComponent } from "./components/view-home/view-home.component";
-import { ViewStudentsComponent } from "./components/view-students/view-students.component";
 import { TableComponent } from "./components/table/table.component";
 import { HttpClientModule } from "@angular/common/http";
 import { ViewSurveyFormComponent } from "./components/view-survey-form/view-survey-form.component";
@@ -49,7 +48,6 @@ import { CourseFormComponent } from "./components/course-form/course-form.compon
     HeaderComponent,
     FooterComponent,
     ViewHomeComponent,
-    ViewStudentsComponent,
     TableComponent,
     ViewSurveyFormComponent,
     SurveyFormComponent,

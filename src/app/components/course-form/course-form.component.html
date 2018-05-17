@@ -4,9 +4,7 @@
       <input matInput type="text" name="description" [(ngModel)]="model.description" placeholder="Descrizione Corso" required>
     </mat-form-field>
     <mat-form-field>
-      <input matInput [matDatepicker]="picker" name="date" [(ngModel)]="model.date" placeholder="Data Corso" required>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+      <input matInput type="text" name="date" [(ngModel)]="model.date" placeholder="Data Corso" required>
     </mat-form-field>
   </div>
   <div>
