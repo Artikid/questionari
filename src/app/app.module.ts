@@ -32,7 +32,7 @@ import {
 } from "@angular/material";
 import { ViewHomeComponent } from "./components/view-home/view-home.component";
 import { TableComponent } from "./components/table/table.component";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ViewSurveyFormComponent } from "./components/view-survey-form/view-survey-form.component";
 import { FormsModule } from "@angular/forms";
 import { SurveyFormComponent } from "./components/survey-form/survey-form.component";
@@ -41,6 +41,7 @@ import { ViewLoginComponent } from "./components/view-login/view-login.component
 import { AuthGuard } from "./guards/auth.guard";
 import { ViewCoursesComponent } from "./components/view-courses/view-courses.component";
 import { CourseFormComponent } from "./components/course-form/course-form.component";
+import { HttpAuthInterceptor } from "./interceptors/http-auth-interceptor";
 
 @NgModule({
   declarations: [
@@ -77,7 +78,7 @@ import { CourseFormComponent } from "./components/course-form/course-form.compon
     MatOptionModule,
     MatProgressSpinnerModule
   ],
-  providers: [{ provide: LOCALE_ID, useValue: "it" }, AuthGuard],
+  providers: [{ provide: LOCALE_ID, useValue: "it" }, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass:HttpAuthInterceptor, multi:true}],
   entryComponents: [CourseFormComponent],
   bootstrap: [AppComponent]
 })

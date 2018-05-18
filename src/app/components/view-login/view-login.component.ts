@@ -12,11 +12,7 @@ import { Router } from "@angular/router";
 })
 export class ViewLoginComponent implements OnInit {
   user: UserLogin = {};
-  constructor(
-    public authService: AuthService,
-    public snackbar: MatSnackBar,
-    public router: Router
-  ) {}
+  constructor(public authService: AuthService, public snackbar: MatSnackBar, public router: Router) {}
 
   ngOnInit() {}
 

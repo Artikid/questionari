@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: "http://surveyresults2018.azurewebsites.net/api/"
+  apiBaseUrl: "http://localhost:57810/api/",
+  tokenBaseUrl: "http://localhost:57810/token"
 };
